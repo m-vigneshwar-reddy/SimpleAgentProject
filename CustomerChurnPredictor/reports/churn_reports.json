@@ -1,0 +1,109 @@
+[
+  {
+    "customer_id": "CUST001",
+    "customer_name": "Alpha Co",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -343 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -343 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST002",
+    "customer_name": "Beta LLC",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 95,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "25 logins in 30d vs 2 in last 7d",
+      "secondary_driver": "4 tickets (unresolved:2), neg_sentiment:0.6"
+    },
+    "behavioral_summary": "Recent sharp engagement decline combined with payment or contract issues \u2014 activity and financial signals both weakening.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "25 logins in 30d vs 2 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "4 tickets (unresolved:2), neg_sentiment:0.6"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=82"
+      ],
+      [
+        "Account Health",
+        "contract ending in -19 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=300.0, adoption_score=28.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST003",
+    "customer_name": "Gamma Inc",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 95,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "10 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "6 tickets (unresolved:4), neg_sentiment:0.75"
+    },
+    "behavioral_summary": "Recent sharp engagement decline combined with payment or contract issues \u2014 activity and financial signals both weakening.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Gamma Inc. ",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "10 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "6 tickets (unresolved:4), neg_sentiment:0.75"
+      ],
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=153"
+      ],
+      [
+        "Account Health",
+        "contract ending in -8 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=1500.0, adoption_score=12.0"
+      ]
+    ]
+  }
+]

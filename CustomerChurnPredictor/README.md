@@ -1,9 +1,9 @@
 CustomerChurnPredictor
 
-This folder is a small package containing sample customer datasets and a churn analyzer.
+This folder contains a churn analyzer utility and a single sample dataset.
 
-Run the analyzer:
+Run the analyzer from the repository root:
 
 ```bash
-python CustomerChurnPredictor/churn_analyzer.py
+python run_churn_analysis.py
 ```
