@@ -1,88 +1,103 @@
 import sqlite3
-DB = "travel.db"
+from datetime import datetime
 
 def init_db():
-    """Initialize the database with updated schema"""
-    conn = sqlite3.connect(DB)
-    cur = conn.cursor()
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS travel_memory (
+    """Initialize the database"""
+    conn = sqlite3.connect('travel.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS trips (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            destination TEXT,
-            days INTEGER,
-            budget INTEGER,
+            destination TEXT NOT NULL,
+            days INTEGER NOT NULL,
+            budget REAL NOT NULL,
             style TEXT,
             purpose TEXT,
             feedback TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
-    """)
+    ''')
+    
+    conn.commit()
+    conn.close()
+
+def save_memory(memory_data):
+    """Save trip data to database"""
+    conn = sqlite3.connect('travel.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        INSERT INTO trips (destination, days, budget, style, purpose, feedback, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', (
+        memory_data.get('destination', ''),
+        memory_data.get('days', 0),
+        memory_data.get('budget', 0),
+        memory_data.get('style', ''),
+        memory_data.get('purpose', ''),
+        memory_data.get('feedback', ''),
+        datetime.now()
+    ))
+    
     conn.commit()
     conn.close()
 
 def load_memory():
-    """Load the most recent travel memory"""
-    conn = sqlite3.connect(DB)
-    cur = conn.cursor()
-    cur.execute("""
+    """Load the most recent trip data"""
+    conn = sqlite3.connect('travel.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
         SELECT destination, days, budget, style, purpose, feedback
-        FROM travel_memory
-        ORDER BY id DESC LIMIT 1
-    """)
-    row = cur.fetchone()
+        FROM trips
+        ORDER BY created_at DESC
+        LIMIT 1
+    ''')
+    
+    row = cursor.fetchone()
     conn.close()
     
     if row:
         return {
-            "destination": row[0],
-            "days": row[1],
-            "budget": row[2],
-            "style": row[3],
-            "purpose": row[4],
-            "feedback": row[5]
+            'destination': row[0],
+            'days': row[1],
+            'budget': row[2],
+            'style': row[3],
+            'purpose': row[4],
+            'feedback': row[5]
         }
-    return {}
-
-def save_memory(memory):
-    """Save current travel memory to database"""
-    conn = sqlite3.connect(DB)
-    cur = conn.cursor()
-    cur.execute("""
-        INSERT INTO travel_memory (destination, days, budget, style, purpose, feedback)
-        VALUES (?, ?, ?, ?, ?, ?)
-    """, (
-        memory.get("destination"),
-        memory.get("days"),
-        memory.get("budget"),
-        memory.get("style"),
-        memory.get("purpose"),
-        memory.get("feedback")
-    ))
-    conn.commit()
-    conn.close()
+    else:
+        return {
+            'destination': 'Paris',
+            'days': 5,
+            'budget': 1500,
+            'style': 'balanced',
+            'purpose': 'leisure'
+        }
 
 def get_all_trips():
-    """Get all saved trips (for history feature)"""
-    conn = sqlite3.connect(DB)
-    cur = conn.cursor()
-    cur.execute("""
-        SELECT id, destination, days, budget, style, purpose, created_at
-        FROM travel_memory
-        ORDER BY id DESC
+    """Get all trip history"""
+    conn = sqlite3.connect('travel.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT destination, days, budget, purpose, created_at
+        FROM trips
+        ORDER BY created_at DESC
         LIMIT 10
-    """)
-    rows = cur.fetchall()
+    ''')
+    
+    rows = cursor.fetchall()
     conn.close()
     
     trips = []
     for row in rows:
         trips.append({
-            "id": row[0],
-            "destination": row[1],
-            "days": row[2],
-            "budget": row[3],
-            "style": row[4],
-            "purpose": row[5],
-            "created_at": row[6]
+            'destination': row[0],
+            'days': row[1],
+            'budget': row[2],
+            'purpose': row[3],
+            'created_at': row[4]
         })
     return trips

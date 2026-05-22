@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "PythonProjects",
+			"path": "F:/vignesh/PythonProjects"
+		},
+		{
+			"path": "../../MyFristPythonProject"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {}
+}

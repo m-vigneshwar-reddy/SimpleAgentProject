@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ScamShield AI</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+:root{--bg:#0b0c10;--s1:#111318;--s2:#181b22;--s3:#1f222c;--b1:#252836;--b2:#2e3245;--red:#ff4560;--red2:rgba(255,69,96,.12);--red3:rgba(255,69,96,.06);--ora:#ff9f43;--ora2:rgba(255,159,67,.12);--grn:#00e676;--grn2:rgba(0,230,118,.12);--blu:#4da6ff;--blu2:rgba(77,166,255,.12);--pur:#b388ff;--t1:#eef0f8;--t2:#8b90a8;--t3:#454860;--mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif;--r:10px;--shadow:0 8px 32px rgba(0,0,0,.5)}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);display:flex;flex-direction:column}
+.topbar{height:54px;background:var(--s1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 18px;gap:14px;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--red),var(--pur));display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 16px rgba(255,69,96,.35)}
+.brand-name{font-size:16px;font-weight:700;letter-spacing:-.3px}
+.brand-name b{color:var(--red)}
+.conn-pill{display:flex;align-items:center;gap:7px;padding:5px 12px;border-radius:20px;border:1px solid var(--b2);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.conn-pill.connected{background:var(--grn2);border-color:rgba(0,230,118,.3);color:var(--grn)}
+.conn-pill.connecting{background:var(--ora2);border-color:rgba(255,159,67,.3);color:var(--ora)}
+.conn-pill.disconnected{background:var(--red2);border-color:rgba(255,69,96,.3);color:var(--red)}
+.conn-pill.setup{background:var(--blu2);border-color:rgba(77,166,255,.3);color:var(--blu)}
+.cpill-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.cpill-dot.pulse{animation:blink 1.3s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.top-stats{display:flex;gap:6px;margin-left:auto}
+.tstat{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:8px;background:var(--s2);border:1px solid var(--b1);font-size:12px}
+.tstat-val{font-weight:700;font-family:var(--mono)}
+/* SETUP MODAL */
+.setup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(6px);z-index:999;align-items:center;justify-content:center}
+.setup-overlay.show{display:flex}
+.setup-modal{background:var(--s2);border:1px solid var(--b2);border-radius:16px;padding:28px;width:530px;max-width:94vw;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow)}
+.setup-modal::-webkit-scrollbar{width:4px}.setup-modal::-webkit-scrollbar-thumb{background:var(--b2)}
+.sm-title{font-size:18px;font-weight:800;margin-bottom:6px}
+.sm-sub{font-size:13px;color:var(--t2);margin-bottom:20px;line-height:1.6}
+.sm-step{display:flex;gap:12px;margin-bottom:14px;padding:14px;background:var(--s3);border-radius:10px;border:1px solid var(--b1)}
+.sm-num{width:28px;height:28px;border-radius:50%;background:var(--blu);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;color:#fff}
+.sm-step-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.sm-step-desc{font-size:12px;color:var(--t2);line-height:1.6}
+.sm-step-desc a{color:var(--blu);text-decoration:none}.sm-step-desc a:hover{text-decoration:underline}
+.sm-code{font-family:var(--mono);background:var(--bg);border:1px solid var(--b1);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--grn);margin-top:6px;word-break:break-all}
+.sm-close{width:100%;padding:11px;border-radius:9px;border:none;margin-top:8px;background:var(--blu);color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s}
+.sm-close:hover{opacity:.88}
+/* APP LAYOUT */
+.app{display:flex;flex:1;overflow:hidden}
+.sidebar{width:210px;background:var(--s1);border-right:1px solid var(--b1);display:flex;flex-direction:column;padding:12px 10px;gap:2px;overflow-y:auto;flex-shrink:0}
+.sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-thumb{background:var(--b2)}
+.nav-sec{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--t3);padding:10px 8px 5px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;color:var(--t2);border:1px solid transparent;transition:all .15s}
+.nav-item:hover{background:var(--s2);color:var(--t1)}.nav-item.active{background:var(--s3);color:var(--t1);border-color:var(--b2)}
+.nav-icon{font-size:15px;width:18px;text-align:center}
+.nav-badge{margin-left:auto;min-width:18px;height:18px;padding:0 5px;border-radius:9px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;background:var(--red);color:#fff}
+.nav-badge.dim{background:var(--b2);color:var(--t3)}
+.eac{margin:8px 0;padding:10px;border-radius:9px;background:var(--s2);border:1px solid var(--b1)}
+.eac-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin-bottom:6px}
+.eac-email{font-size:11px;color:var(--t1);font-weight:600;word-break:break-all}
+.eac-prov{font-size:10px;color:var(--t3);margin-top:2px}
+.eac-stat{font-size:10px;font-weight:700;margin-top:6px}
+.eac-stat.ok{color:var(--grn)}.eac-stat.err{color:var(--red)}.eac-stat.wait{color:var(--ora)}
+.sb-btn{width:100%;padding:7px;border-radius:7px;border:1px solid var(--b2);background:var(--s2);color:var(--t2);font-family:var(--sans);font-size:11px;font-weight:600;cursor:pointer;margin-bottom:5px;transition:all .15s}
+.sb-btn:hover{background:var(--b2);color:var(--t1)}
+.sb-btn.blu{border-color:rgba(77,166,255,.3);background:var(--blu2);color:var(--blu)}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.tabs{display:flex;border-bottom:1px solid var(--b1);background:var(--s1);flex-shrink:0}
+.tab{padding:12px 20px;font-size:13px;font-weight:500;color:var(--t3);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.tab.active{color:var(--t1);border-bottom-color:var(--blu)}
+.page{flex:1;overflow-y:auto;padding:18px;display:none}
+.page.active{display:block}
+.page::-webkit-scrollbar{width:5px}.page::-webkit-scrollbar-thumb{background:var(--b2);border-radius:3px}
+.detail{width:300px;background:var(--s1);border-left:1px solid var(--b1);display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+.dp-header{padding:14px 16px;border-bottom:1px solid var(--b1)}
+.dp-title{font-size:13px;font-weight:700;margin-bottom:2px}
+.dp-sub{font-size:11px;color:var(--t3)}
+.dp-body{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.dp-body::-webkit-scrollbar{width:3px}.dp-body::-webkit-scrollbar-thumb{background:var(--b2)}
+.dp-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin-bottom:7px}
+.score-hero{background:var(--s2);border-radius:10px;border:1px solid var(--b1);padding:16px;text-align:center}
+.score-num{font-size:52px;font-weight:700;font-family:var(--mono);line-height:1}
+.score-verdict{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
+.score-type{font-size:11px;color:var(--t3);margin-top:3px}
+.bubble{background:var(--s2);border:1px solid var(--b1);border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.6;color:var(--t1);word-break:break-word}
+.subj-box{background:var(--s3);border:1px solid var(--b2);border-radius:7px;padding:8px 10px;font-size:12px;font-weight:600;color:var(--t1);margin-bottom:6px}
+.reason-box{background:var(--s3);border-radius:7px;padding:8px 10px;font-size:12px;color:var(--t1);line-height:1.5;margin-bottom:5px}
+.mbar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.mbar-name{font-size:10px;color:var(--t2);width:110px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mbar-bg{flex:1;height:5px;background:var(--b1);border-radius:3px;overflow:hidden}
+.mbar-fill{height:100%;border-radius:3px;transition:width .7s ease}
+.mbar-val{font-family:var(--mono);font-size:10px;color:var(--t3);width:26px;text-align:right}
+.dp-btn{width:100%;padding:9px;border-radius:8px;border:1px solid var(--b2);font-family:var(--sans);font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;margin-bottom:7px}
+.dp-btn.green{background:var(--grn2);color:var(--grn);border-color:rgba(0,230,118,.3)}.dp-btn.green:hover{background:rgba(0,230,118,.22)}
+.dp-btn.red{background:var(--red2);color:var(--red);border-color:rgba(255,69,96,.3)}.dp-btn.red:hover{background:rgba(255,69,96,.22)}
+.dp-btn.ora{background:var(--ora2);color:var(--ora);border-color:rgba(255,159,67,.3)}.dp-btn.ora:hover{background:rgba(255,159,67,.22)}
+/* TOASTS */
+#toasts{position:fixed;top:64px;right:16px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{pointer-events:all;background:var(--s2);border:1px solid var(--b2);border-left:4px solid var(--red);border-radius:10px;padding:12px 14px;width:330px;box-shadow:var(--shadow);animation:tin .35s cubic-bezier(.34,1.56,.64,1)}
+.toast.warn{border-left-color:var(--ora)}
+@keyframes tin{from{opacity:0;transform:translateX(50px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes tout{to{opacity:0;transform:translateX(50px) scale(.88)}}
+.t-head{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+.t-src{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--red)}
+.toast.warn .t-src{color:var(--ora)}
+.t-time{font-size:10px;color:var(--t3);margin-left:auto;font-family:var(--mono)}
+.t-subj{font-size:12px;font-weight:700;color:var(--t1);margin-bottom:3px}
+.t-from{font-size:11px;color:var(--t2);line-height:1.5;margin-bottom:9px}
+.t-btns{display:flex;gap:7px}
+.t-btn{flex:1;padding:5px 8px;border-radius:6px;border:1px solid var(--b2);font-family:var(--sans);font-size:11px;font-weight:700;cursor:pointer;transition:all .15s}
+.t-btn.yes{background:var(--red2);color:var(--red);border-color:rgba(255,69,96,.3)}.t-btn.yes:hover{background:rgba(255,69,96,.22)}
+.t-btn.no{background:var(--s3);color:var(--t2)}.t-btn.no:hover{background:var(--b2);color:var(--t1)}
+/* METRIC CARDS */
+.mc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.mc{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:16px 18px;transition:border-color .2s}
+.mc:hover{border-color:var(--b2)}
+.mc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--t3);margin-bottom:8px}
+.mc-val{font-size:30px;font-weight:700;font-family:var(--mono);line-height:1}
+.mc-sub{font-size:11px;color:var(--t3);margin-top:5px}
+.mc-bar{height:3px;border-radius:2px;margin-top:10px;background:var(--b1);overflow:hidden}
+.mc-fill{height:100%;border-radius:2px;transition:width .8s ease}
+.sec-title{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.sec-link{font-size:12px;font-weight:600;color:var(--blu);cursor:pointer}.sec-link:hover{text-decoration:underline}
+/* FEED */
+.feed{display:flex;flex-direction:column;gap:7px}
+.fi{display:flex;align-items:flex-start;gap:11px;padding:12px 13px;border-radius:9px;background:var(--s1);border:1px solid var(--b1);cursor:pointer;transition:all .2s;animation:fi .3s ease}
+.fi:hover{background:var(--s2);border-color:var(--b2)}
+.fi.scam{border-left:3px solid var(--red);background:var(--red3)}
+.fi.suspicious{border-left:3px solid var(--ora);background:rgba(255,159,67,.04)}
+.fi.safe{border-left:3px solid var(--grn)}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.fi-body{flex:1;min-width:0}
+.fi-head{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+.fi-sender{font-size:11px;font-weight:700;color:var(--t1);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fi-time{font-family:var(--mono);font-size:10px;color:var(--t3);flex-shrink:0}
+.fi-subj{font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fi-prev{font-size:11px;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fi-tags{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:.5px}
+.tag.scam{background:var(--red2);color:var(--red)}.tag.susp{background:var(--ora2);color:var(--ora)}.tag.safe{background:var(--grn2);color:var(--grn)}.tag.n{background:var(--s3);color:var(--t3)}
+.fi-acts{display:flex;gap:6px;margin-top:7px}
+.fi-btn{padding:4px 10px;border-radius:6px;border:1px solid var(--b2);font-family:var(--sans);font-size:10px;font-weight:700;cursor:pointer;transition:all .15s;background:var(--s2);color:var(--t2)}
+.fi-btn:hover{background:var(--s3);color:var(--t1)}
+.fi-btn.g{border-color:rgba(0,230,118,.3);color:var(--grn);background:var(--grn2)}.fi-btn.g:hover{background:rgba(0,230,118,.22)}
+/* SCAM TABLE */
+.filter-bar{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+.fbtn{padding:6px 14px;border-radius:20px;border:1px solid var(--b1);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;background:var(--s1);color:var(--t3)}
+.fbtn:hover{border-color:var(--b2);color:var(--t2)}.fbtn.active{background:var(--blu2);border-color:rgba(77,166,255,.4);color:var(--blu)}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;padding:9px 11px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--t3);border-bottom:1px solid var(--b1);background:var(--s1)}
+.tbl td{padding:10px 11px;font-size:12px;border-bottom:1px solid var(--b1);vertical-align:middle}
+.tbl tr{background:var(--s1);transition:background .1s}.tbl tr:hover td{background:var(--s2)}
+.rpill{display:inline-flex;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;text-transform:uppercase}
+.rpill.h{background:var(--red2);color:var(--red);border:1px solid rgba(255,69,96,.25)}.rpill.m{background:var(--ora2);color:var(--ora);border:1px solid rgba(255,159,67,.25)}.rpill.l{background:var(--grn2);color:var(--grn);border:1px solid rgba(0,230,118,.25)}
+.abtn{padding:4px 10px;border-radius:6px;border:1px solid var(--b1);font-size:10px;font-weight:700;cursor:pointer;transition:all .15s;background:transparent;color:var(--t3);font-family:var(--sans);margin-right:4px}
+.abtn:hover{border-color:var(--b2);color:var(--t1);background:var(--s2)}.abtn.g{color:var(--grn);border-color:rgba(0,230,118,.2)}.abtn.g:hover{background:var(--grn2)}.abtn.r{color:var(--red);border-color:rgba(255,69,96,.2)}.abtn.r:hover{background:var(--red2)}
+.search-wrap{display:flex;gap:9px;margin-bottom:12px}
+.search-inp{flex:1;padding:8px 13px;background:var(--s1);border:1px solid var(--b1);border-radius:8px;color:var(--t1);font-family:var(--sans);font-size:13px;outline:none}
+.search-inp:focus{border-color:var(--blu)}.search-inp::placeholder{color:var(--t3)}
+.export-btn{padding:8px 14px;border-radius:8px;border:1px solid rgba(77,166,255,.3);background:var(--blu2);color:var(--blu);font-family:var(--sans);font-size:12px;font-weight:700;cursor:pointer}
+/* SIMULATE */
+.sim-card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.inp{width:100%;padding:9px 13px;background:var(--s2);border:1px solid var(--b2);border-radius:8px;color:var(--t1);font-family:var(--sans);font-size:13px;outline:none;transition:border-color .15s;margin-bottom:10px}
+.inp:focus{border-color:var(--blu)}.inp::placeholder{color:var(--t3)}
+.textarea{min-height:90px;resize:vertical;line-height:1.5}
+.sbtn{padding:9px 20px;border-radius:9px;border:none;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;margin-right:8px;margin-top:2px}
+.sbtn.primary{background:var(--blu);color:#fff}.sbtn.primary:hover{opacity:.88}
+.sbtn.sec{background:var(--s3);color:var(--t2);border:1px solid var(--b2)}.sbtn.sec:hover{background:var(--b2);color:var(--t1)}
+.sim-result{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:16px;display:none}
+/* ANALYTICS */
+.an-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.an-card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:16px}
+.an-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin-bottom:14px}
+.bar-row{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.bar-lbl{font-size:11px;color:var(--t2);width:110px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-bg{flex:1;height:7px;background:var(--b1);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .7s ease}
+.bar-num{font-family:var(--mono);font-size:10px;color:var(--t3);width:28px;text-align:right}
+/* SETTINGS */
+.set-card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:14px;margin-bottom:12px}
+.set-sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin-bottom:12px}
+.set-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--b1)}
+.set-row:last-child{border-bottom:none}
+.set-info{flex:1}.set-name{font-size:13px;font-weight:600;margin-bottom:2px}.set-desc{font-size:11px;color:var(--t3);line-height:1.5}
+.toggle{width:38px;height:20px;border-radius:10px;background:var(--b2);cursor:pointer;transition:background .2s;flex-shrink:0;position:relative}
+.toggle.on{background:rgba(0,230,118,.5)}.toggle::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;top:3px;left:3px;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.4)}.toggle.on::after{transform:translateX(18px)}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 20px;color:var(--t3);text-align:center;gap:8px}
+.empty-icon{font-size:40px;opacity:.4}.empty-text{font-size:13px}
+</style>
+</head>
+<body>
+<div id="toasts"></div>
+
+<!-- SETUP MODAL -->
+<div class="setup-overlay" id="setup-overlay">
+<div class="setup-modal">
+<div class="sm-title">📧 Connect Your Real Email</div>
+<div class="sm-sub">Fill in the <strong>.env</strong> file in the project folder. These steps take about 3 minutes.</div>
+<div class="sm-step"><div class="sm-num">1</div><div><div class="sm-step-title">Open the .env file in VS Code</div><div class="sm-step-desc">It is already in your project folder. Click it in the VS Code file explorer on the left.</div></div></div>
+<div class="sm-step"><div class="sm-num">2</div><div><div class="sm-step-title">Set your email address</div><div class="sm-step-desc"><div class="sm-code">EMAIL_ADDRESS=yourname@gmail.com</div></div></div></div>
+<div class="sm-step"><div class="sm-num">3</div><div><div class="sm-step-title">Generate an App Password (not your normal password)</div><div class="sm-step-desc">
+<strong>Gmail:</strong> Go to <a href="https://myaccount.google.com/apppasswords" target="_blank">myaccount.google.com/apppasswords</a><br>
+Select Mail + Windows Computer → Generate → copy the 16-letter password<br><br>
+<strong>Outlook:</strong> Go to <a href="https://account.microsoft.com/security" target="_blank">account.microsoft.com/security</a><br>
+→ Advanced security options → App passwords → Create a new app password</div></div></div>
+<div class="sm-step"><div class="sm-num">4</div><div><div class="sm-step-title">Paste it into .env</div><div class="sm-step-desc"><div class="sm-code">EMAIL_APP_PASSWORD=abcd efgh ijkl mnop<br>EMAIL_PROVIDER=gmail</div></div></div></div>
+<div class="sm-step"><div class="sm-num">5</div><div><div class="sm-step-title">Save .env and restart the server</div><div class="sm-step-desc"><div class="sm-code">Press Ctrl+C in the terminal, then type: npm start</div></div></div></div>
+<button class="sm-close" onclick="document.getElementById('setup-overlay').classList.remove('show')">Got it — I'll fill in my .env file now</button>
+</div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="brand"><div class="brand-icon">🛡️</div><div class="brand-name">Scam<b>Shield</b> AI · Real Email Monitor</div></div>
+  <div class="conn-pill disconnected" id="conn-pill" onclick="document.getElementById('setup-overlay').classList.add('show')">
+    <div class="cpill-dot" id="cpill-dot"></div><span id="conn-txt">Not Connected</span>
+  </div>
+  <div class="top-stats">
+    <div class="tstat"><span class="tstat-val" id="h-scan" style="color:var(--blu)">0</span><span style="color:var(--t3);font-size:11px;margin-left:4px">Scanned</span></div>
+    <div class="tstat"><span class="tstat-val" id="h-block" style="color:var(--red)">0</span><span style="color:var(--t3);font-size:11px;margin-left:4px">Blocked</span></div>
+    <div class="tstat"><span class="tstat-val" id="h-safe" style="color:var(--grn)">0</span><span style="color:var(--t3);font-size:11px;margin-left:4px">Safe</span></div>
+  </div>
+</div>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="nav-sec">Menu</div>
+    <div class="nav-item active" onclick="switchPage('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</div>
+    <div class="nav-item" onclick="switchPage('messages',this)"><span class="nav-icon">📧</span> All Emails <span class="nav-badge dim" id="badge-msg">0</span></div>
+    <div class="nav-item" onclick="switchPage('scamlist',this)"><span class="nav-icon">🚨</span> Scam Emails <span class="nav-badge" id="badge-scam">0</span></div>
+    <div class="nav-item" onclick="switchPage('simulate',this)"><span class="nav-icon">🧪</span> Test Email</div>
+    <div class="nav-item" onclick="switchPage('analytics',this)"><span class="nav-icon">📈</span> Analytics</div>
+    <div class="nav-item" onclick="switchPage('settings',this)"><span class="nav-icon">⚙️</span> Settings</div>
+    <div class="nav-sec" style="margin-top:8px">Account</div>
+    <div class="eac">
+      <div class="eac-lbl">Email</div>
+      <div class="eac-email" id="eac-email">Not configured</div>
+      <div class="eac-prov" id="eac-prov">Edit .env to connect</div>
+      <div class="eac-stat wait" id="eac-stat">● Not connected</div>
+    </div>
+    <button class="sb-btn" onclick="reconnect()">🔄 Reconnect</button>
+    <button class="sb-btn blu" onclick="document.getElementById('setup-overlay').classList.add('show')">❓ Setup Guide</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="tabs"><div class="tab active" id="tab-label">Overview</div></div>
+
+    <!-- DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="mc-grid">
+        <div class="mc"><div class="mc-lbl">Emails Scanned</div><div class="mc-val" id="mc-scan" style="color:var(--blu)">0</div><div class="mc-sub">From your real inbox</div><div class="mc-bar"><div class="mc-fill" id="fill-scan" style="width:0%;background:var(--blu)"></div></div></div>
+        <div class="mc"><div class="mc-lbl">Scam Emails</div><div class="mc-val" id="mc-block" style="color:var(--red)">0</div><div class="mc-sub" id="mc-sub">0% of emails</div><div class="mc-bar"><div class="mc-fill" id="fill-block" style="width:0%;background:var(--red)"></div></div></div>
+        <div class="mc"><div class="mc-lbl">Model Accuracy</div><div class="mc-val" style="color:var(--grn)">99.2%</div><div class="mc-sub">5-model ML/DL ensemble</div><div class="mc-bar"><div class="mc-fill" style="width:99.2%;background:var(--grn)"></div></div></div>
+      </div>
+      <div class="sec-title">Recent Emails <span id="act-count" style="color:var(--t3);font-size:12px;font-weight:400"></span><a class="sec-link" onclick="switchPage('messages',document.querySelectorAll('.nav-item')[1])">See All →</a></div>
+      <div class="feed" id="dash-feed"><div class="empty"><div class="empty-icon">📭</div><div class="empty-text">Waiting for real emails from your inbox…<br><br>Make sure your .env file is filled in and the server is running.</div></div></div>
+    </div>
+
+    <!-- ALL EMAILS -->
+    <div class="page" id="page-messages">
+      <div class="sec-title" style="margin-bottom:14px">All Emails</div>
+      <div class="feed" id="all-feed"><div class="empty"><div class="empty-icon">📭</div><div class="empty-text">No emails yet</div></div></div>
+    </div>
+
+    <!-- SCAM LIST -->
+    <div class="page" id="page-scamlist">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div class="sec-title" style="margin-bottom:0">Scam Registry <span id="scam-cnt" style="color:var(--t3);font-size:12px;font-weight:400"></span></div>
+        <button class="export-btn" onclick="exportCSV()">⬇ Export CSV</button>
+      </div>
+      <div class="search-wrap"><input class="search-inp" id="scam-search" placeholder="Search sender, subject, keyword…" oninput="renderScamTable()"/></div>
+      <div class="filter-bar">
+        <button class="fbtn active" onclick="setFilter('all',this)">All</button>
+        <button class="fbtn" onclick="setFilter('Phishing',this)">Phishing</button>
+        <button class="fbtn" onclick="setFilter('Financial Fraud',this)">Financial</button>
+        <button class="fbtn" onclick="setFilter('Identity Theft',this)">Identity Theft</button>
+        <button class="fbtn" onclick="setFilter('Prize Scam',this)">Prize Scam</button>
+        <button class="fbtn" onclick="setFilter('Job Scam',this)">Job Scam</button>
+      </div>
+      <table class="tbl"><thead><tr><th>#</th><th>From</th><th>Subject</th><th>Risk</th><th>Type</th><th>Time</th><th>Actions</th></tr></thead><tbody id="scam-tbody"></tbody></table>
+      <div class="empty" id="scam-empty" style="display:none"><div class="empty-icon">✅</div><div class="empty-text">No scam emails found</div></div>
+    </div>
+
+    <!-- SIMULATE -->
+    <div class="page" id="page-simulate">
+      <div class="sec-title" style="margin-bottom:16px">🧪 Test Any Email</div>
+      <div class="sim-card">
+        <div class="dp-lbl" style="margin-bottom:7px">Sender Address</div>
+        <input class="inp" id="sim-sender" placeholder="e.g. alerts@sbi-secure-update.net"/>
+        <div class="dp-lbl" style="margin-bottom:7px">Subject Line</div>
+        <input class="inp" id="sim-subject" placeholder="e.g. URGENT: Your account has been suspended"/>
+        <div class="dp-lbl" style="margin-bottom:7px">Email Body</div>
+        <textarea class="inp textarea" id="sim-text" placeholder="Paste the full email body here…"></textarea>
+        <div>
+          <button class="sbtn primary" onclick="runSim()">🔍 Analyse Email</button>
+          <button class="sbtn sec" onclick="loadScam()">⚠ Scam Sample</button>
+          <button class="sbtn sec" onclick="loadSafe()">✅ Safe Sample</button>
+        </div>
+      </div>
+      <div class="sim-result" id="sim-result"></div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="page" id="page-analytics">
+      <div class="sec-title" style="margin-bottom:16px">📈 Analytics</div>
+      <div class="an-grid">
+        <div class="an-card"><div class="an-title">Scam Type Breakdown</div><div id="an-type"></div></div>
+        <div class="an-card"><div class="an-title">ML/DL Model Accuracy</div><div id="an-models"></div></div>
+        <div class="an-card" style="grid-column:1/-1"><div class="an-title">Top Flagged Senders</div><div id="an-senders"></div></div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="page" id="page-settings">
+      <div class="sec-title" style="margin-bottom:16px">⚙️ Settings</div>
+      <div id="settings-content"></div>
+    </div>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="detail">
+    <div class="dp-header"><div class="dp-title" id="dp-title">Email Details</div><div class="dp-sub" id="dp-sub">Select an email to inspect</div></div>
+    <div class="dp-body" id="dp-body"><div class="empty" style="padding:40px 0"><div class="empty-icon">🔍</div><div class="empty-text">Click any email<br>for full AI analysis</div></div></div>
+  </div>
+</div>
+
+<script>
+const API='http://localhost:3001', WS_URL='ws://localhost:3001';
+const MODELS=['Transformer-LSTM','BERT NLP','Random Forest','XGBoost','GraphSAGE GNN'];
+const MODEL_COLS=['#4da6ff','#b388ff','#00e676','#ff9f43','#ff4560'];
+let messages=[],scamList=[],stats={scanned:0,blocked:0,safe:0,byType:{}},scamFilter='all';
+let notifEnabled=true;
+
+// WS
+function connectWS(){
+  const ws=new WebSocket(WS_URL);
+  ws.onmessage=(e)=>{
+    const d=JSON.parse(e.data);
+    if(d.type==='NEW_MESSAGE') handleEmail(d.message);
+    if(d.type==='EMAIL_STATUS') setConnStatus(d.status);
+    if(d.type==='INIT'){stats=d.stats||stats;messages=d.recentMessages||[];scamList=d.scamList||[];updateStats();renderDash();renderAll();renderScamTable();}
+    if(d.type==='SCAM_REMOVED'){scamList=scamList.filter(s=>s.id!==d.id);renderScamTable();}
+  };
+  ws.onopen=()=>loadInit();
+  ws.onclose=()=>setTimeout(connectWS,3000);
+  ws.onerror=()=>ws.close();
+}
+async function loadInit(){
+  try{
+    const[s,m,sc,st]=await Promise.all([fetch(API+'/api/email-status').then(r=>r.json()),fetch(API+'/api/messages').then(r=>r.json()),fetch(API+'/api/scams').then(r=>r.json()),fetch(API+'/api/stats').then(r=>r.json())]);
+    setConnStatus(s);messages=m;scamList=sc;stats=st;updateStats();renderDash();renderAll();renderScamTable();
+  }catch(e){}
+}
+function setConnStatus(s){
+  const pill=document.getElementById('conn-pill'),txt=document.getElementById('conn-txt'),dot=document.getElementById('cpill-dot');
+  const eEmail=document.getElementById('eac-email'),eProv=document.getElementById('eac-prov'),eStat=document.getElementById('eac-stat');
+  if(s.setupRequired){pill.className='conn-pill setup';txt.textContent='Setup Required';dot.classList.remove('pulse');eEmail.textContent='Not configured';eProv.textContent='Edit .env file';eStat.textContent='● Setup needed';eStat.className='eac-stat wait';document.getElementById('setup-overlay').classList.add('show');return;}
+  if(s.connected){pill.className='conn-pill connected';txt.textContent=s.email||'Connected';dot.classList.add('pulse');eEmail.textContent=s.email||'Connected';eProv.textContent=(s.provider||'Email')+(s.total?' · '+s.total+' emails':'');eStat.textContent='● Monitoring live';eStat.className='eac-stat ok';}
+  else if(s.error){pill.className='conn-pill disconnected';txt.textContent='Error — Click for Help';dot.classList.remove('pulse');eEmail.textContent=s.email||'Error';eProv.textContent=s.message||'';eStat.textContent='● '+s.message;eStat.className='eac-stat err';}
+  else{pill.className='conn-pill connecting';txt.textContent='Connecting…';dot.classList.add('pulse');eEmail.textContent=s.email||'Connecting…';eProv.textContent=s.message||'';eStat.textContent='● Connecting…';eStat.className='eac-stat wait';}
+}
+function handleEmail(msg){
+  messages.unshift(msg);if(messages.length>500)messages.pop();
+  stats.scanned++;
+  if(msg.verdict!=='SAFE'){stats.blocked++;stats.byType[msg.type]=(stats.byType[msg.type]||0)+1;if(!scamList.find(s=>s.id===msg.id)){scamList.unshift(msg);if(scamList.length>200)scamList.pop();}if(notifEnabled&&msg.triggerAlert!==false)showToast(msg);}
+  else stats.safe++;
+  updateStats();addFeed('dash-feed',msg,25);addFeed('all-feed',msg,80);renderScamTable();
+  document.getElementById('act-count').textContent='('+messages.length+' total)';
+  document.getElementById('badge-msg').textContent=messages.length;
+  document.getElementById('badge-scam').textContent=scamList.length;
+  document.getElementById('scam-cnt').textContent='('+scamList.length+')';
+}
+function addFeed(id,msg,max){
+  const feed=document.getElementById(id),empty=feed.querySelector('.empty');if(empty)empty.remove();
+  const cls=msg.verdict==='SCAM'?'scam':msg.verdict==='SUSPICIOUS'?'suspicious':'safe';
+  const tag=msg.verdict==='SCAM'?'<span class="tag scam">Scam</span><span class="tag n">'+msg.type+'</span>':msg.verdict==='SUSPICIOUS'?'<span class="tag susp">Suspicious</span><span class="tag n">'+msg.type+'</span>':'<span class="tag safe">Safe</span>';
+  const act=msg.verdict!=='SAFE'?'<div class="fi-acts"><button class="fi-btn g" onclick="event.stopPropagation();notScam(\''+msg.id+'\')">✅ Not Scam</button></div>':'';
+  const d=document.createElement('div');d.className='fi '+cls;d.dataset.id=msg.id;
+  d.innerHTML='<div style="font-size:22px;flex-shrink:0;margin-top:1px">📧</div><div class="fi-body"><div class="fi-head"><span class="fi-sender">'+esc(msg.sender)+'</span><span class="fi-time">'+msg.receivedAt+'</span></div><div class="fi-subj">'+esc(msg.subject||'(No Subject)')+'</div><div class="fi-prev">'+esc((msg.body||msg.text||'').slice(0,120))+'</div><div class="fi-tags">'+tag+'<span class="tag n">'+msg.riskScore+'/100</span></div>'+act+'</div>';
+  d.onclick=(e)=>{if(!e.target.classList.contains('fi-btn'))showDetail(msg);};
+  feed.insertBefore(d,feed.firstChild);while(feed.children.length>max)feed.removeChild(feed.lastChild);
+}
+function renderDash(){const f=document.getElementById('dash-feed');f.innerHTML='';if(!messages.length){f.innerHTML='<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">Waiting for real emails…</div></div>';return;}messages.slice(0,20).forEach(m=>appendFeedItem(f,m));}
+function renderAll(){const f=document.getElementById('all-feed');f.innerHTML='';if(!messages.length){f.innerHTML='<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">No emails yet</div></div>';return;}messages.slice(0,60).forEach(m=>appendFeedItem(f,m));}
+function appendFeedItem(f,m){const cls=m.verdict==='SCAM'?'scam':m.verdict==='SUSPICIOUS'?'suspicious':'safe';const d=document.createElement('div');d.className='fi '+cls;d.innerHTML='<div style="font-size:22px;flex-shrink:0;margin-top:1px">📧</div><div class="fi-body"><div class="fi-head"><span class="fi-sender">'+esc(m.sender)+'</span><span class="fi-time">'+m.receivedAt+'</span></div><div class="fi-subj">'+esc(m.subject||'(No Subject)')+'</div><div class="fi-prev">'+esc((m.body||m.text||'').slice(0,100))+'</div><div class="fi-tags"><span class="tag '+(m.verdict==='SCAM'?'scam':m.verdict==='SUSPICIOUS'?'susp':'safe')+'">'+m.verdict+'</span><span class="tag n">'+m.riskScore+'/100</span></div></div>';d.onclick=()=>showDetail(m);f.appendChild(d);}
+function renderScamTable(){
+  const q=(document.getElementById('scam-search').value||'').toLowerCase();
+  const fl=scamList.filter(m=>(scamFilter==='all'||m.type===scamFilter)&&(!q||m.text.toLowerCase().includes(q)||(m.sender||'').toLowerCase().includes(q)||(m.subject||'').toLowerCase().includes(q)));
+  document.getElementById('scam-empty').style.display=fl.length?'none':'flex';
+  document.getElementById('badge-scam').textContent=scamList.length;
+  document.getElementById('scam-cnt').textContent='('+scamList.length+')';
+  document.getElementById('scam-tbody').innerHTML=fl.map((m,i)=>'<tr data-id="'+m.id+'"><td style="color:var(--t3);font-family:var(--mono);font-size:11px">'+(i+1)+'</td><td style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:var(--t2)">'+esc(m.sender)+'</td><td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+esc(m.subject||'')+'">'+esc(m.subject||'(No Subject)')+'</td><td><span class="rpill '+(m.riskScore>=55?'h':m.riskScore>=25?'m':'l')+'">'+m.riskScore+'/100</span></td><td style="font-size:10px;color:var(--t3)">'+m.type+'</td><td style="font-family:var(--mono);font-size:10px;color:var(--t3)">'+m.receivedAt+'</td><td><button class="abtn" onclick="showDetail(findMsg(\''+m.id+'\'))">🔍</button><button class="abtn g" onclick="notScam(\''+m.id+'\')">✅ Not Scam</button><button class="abtn r" onclick="removeScam(\''+m.id+'\')">🗑</button></td></tr>').join('');
+}
+function setFilter(f,btn){scamFilter=f;document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderScamTable();}
+function showDetail(msg){
+  if(!msg)return;
+  const rc=msg.riskScore>=55?'var(--red)':msg.riskScore>=25?'var(--ora)':'var(--grn)';
+  document.getElementById('dp-title').textContent='📧 '+msg.sender;
+  document.getElementById('dp-sub').textContent=msg.receivedAt+' · '+msg.verdict;
+  const mbars=MODELS.map((m,i)=>{const s=Math.round(msg.modelScores?.[m]??msg.riskScore);return '<div class="mbar-row"><span class="mbar-name">'+m+'</span><div class="mbar-bg"><div class="mbar-fill" style="width:'+s+'%;background:'+MODEL_COLS[i]+'"></div></div><span class="mbar-val">'+s+'</span></div>';}).join('');
+  const reasons=(msg.reasons&&msg.reasons.length)?msg.reasons.map(r=>'<div class="reason-box">'+r+'</div>').join(''):'<div class="reason-box">✅ No scam indicators found</div>';
+  document.getElementById('dp-body').innerHTML='<div><div class="dp-lbl">Risk Score</div><div class="score-hero"><div class="score-num" style="color:'+rc+'">'+msg.riskScore+'</div><div class="score-verdict" style="color:'+rc+'">'+msg.verdict+'</div><div class="score-type">'+(msg.type||'N/A')+'</div></div></div><div><div class="dp-lbl">Subject</div><div class="subj-box">'+esc(msg.subject||'(No Subject)')+'</div><div class="dp-lbl">From</div><div style="font-size:12px;color:var(--t2);margin-bottom:8px">'+esc(msg.sender||'')+'</div><div class="dp-lbl">Preview</div><div class="bubble">'+esc((msg.body||msg.text||'').slice(0,400))+'</div></div><div><div class="dp-lbl">Why Flagged</div>'+reasons+'</div><div><div class="dp-lbl">ML/DL Model Scores</div>'+mbars+'</div><div style="display:flex;flex-direction:column;gap:7px;padding-bottom:16px">'+(msg.verdict!=='SAFE'?'<button class="dp-btn green" onclick="notScam(\''+msg.id+'\')">✅ Not a Scam — Remove</button>':'')+(scamList.find(s=>s.id===msg.id)?'<button class="dp-btn red" onclick="removeScam(\''+msg.id+'\')">🗑 Remove from Registry</button>':'')+'<button class="dp-btn ora" onclick="blockSender(\''+esc(msg.sender||'')+'\')">🚫 Block This Sender</button></div>';
+}
+async function notScam(id){await fetch(API+'/api/scams/'+id+'/not-scam',{method:'POST'});scamList=scamList.filter(m=>m.id!==id);renderScamTable();const m=messages.find(m=>m.id===id);if(m){m.verdict='SAFE';m.userCorrected=true;}}
+async function removeScam(id){await fetch(API+'/api/scams/'+id,{method:'DELETE'});scamList=scamList.filter(m=>m.id!==id);renderScamTable();}
+async function blockSender(sender){if(!sender||!confirm('Block all emails from "'+sender+'"?'))return;await fetch(API+'/api/block',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sender})});alert('Blocked: '+sender);}
+async function reconnect(){await fetch(API+'/api/reconnect',{method:'POST'});setConnStatus({connected:false,message:'Reconnecting…'});}
+function findMsg(id){return messages.find(m=>m.id===id)||scamList.find(m=>m.id===id);}
+function showToast(msg){
+  const c=document.getElementById('toasts'),isScam=msg.verdict==='SCAM';
+  const d=document.createElement('div');d.className='toast'+(isScam?'':' warn');
+  d.innerHTML='<div class="t-head"><span style="font-size:15px">📧</span><span class="t-src">'+(isScam?'🚨 Scam Email':'⚠ Suspicious Email')+'</span><span class="t-time">'+msg.receivedAt+'</span></div><div class="t-subj">'+esc(msg.subject||'(No Subject)')+'</div><div class="t-from">From: '+esc(msg.sender)+'</div><div class="t-btns"><button class="t-btn yes" onclick="showDetail(findMsg(\''+msg.id+'\'));dismissToast(this)">View Details</button><button class="t-btn no" onclick="notScam(\''+msg.id+'\');dismissToast(this)">✅ Not Scam</button><button class="t-btn no" onclick="dismissToast(this)">Dismiss</button></div>';
+  c.appendChild(d);setTimeout(()=>{d.style.animation='tout .3s ease forwards';setTimeout(()=>d.remove(),300);},9000);
+}
+function dismissToast(btn){const t=btn.closest('.toast');t.style.animation='tout .3s ease forwards';setTimeout(()=>t.remove(),300);}
+const SCAM_S=[{sender:'alerts@sbi-secure-update.net',subject:'URGENT: SBI Account Suspended',text:'Your SBI account has been SUSPENDED. Verify at http://sbi-verify-secure.cc/login immediately or account permanently closed.'},{sender:'prize@lottery-india.xyz',subject:'You Won ₹50,00,000 - Claim Now',text:'Congratulations! You have won ₹50,00,000 in the National Lottery. Pay ₹2,500 processing fee to claim. Act within 24 hours!'}];
+const SAFE_S=[{sender:'noreply@amazon.in',subject:'Your order has been shipped',text:'Hi, your order #405-1234567 has been shipped. Expected delivery: Thursday. Track at amazon.in/orders.'},{sender:'no-reply@github.com',subject:'[ScamShield] Pull request merged',text:'Pull request #47 was successfully merged into main by your collaborator.'}];
+function loadScam(){const s=SCAM_S[Math.floor(Math.random()*SCAM_S.length)];document.getElementById('sim-sender').value=s.sender;document.getElementById('sim-subject').value=s.subject;document.getElementById('sim-text').value=s.text;document.getElementById('sim-result').style.display='none';}
+function loadSafe(){const s=SAFE_S[Math.floor(Math.random()*SAFE_S.length)];document.getElementById('sim-sender').value=s.sender;document.getElementById('sim-subject').value=s.subject;document.getElementById('sim-text').value=s.text;document.getElementById('sim-result').style.display='none';}
+async function runSim(){
+  const text=document.getElementById('sim-text').value.trim(),subject=document.getElementById('sim-subject').value.trim()||'(No Subject)',sender=document.getElementById('sim-sender').value.trim()||'test@test.com';
+  if(!text)return;
+  const res=await fetch(API+'/api/analyse',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,subject,sender})});
+  const data=await res.json();
+  const rc=data.riskScore>=55?'var(--red)':data.riskScore>=25?'var(--ora)':'var(--grn)';
+  const reasons=(data.reasons||[]).length?data.reasons.map(r=>'<div class="reason-box">'+r+'</div>').join(''):'<div class="reason-box">✅ No scam signals found</div>';
+  const mbars=MODELS.map((m,i)=>{const s=Math.round((data.modelScores||{})[m]||data.riskScore);return '<div class="mbar-row"><span class="mbar-name">'+m+'</span><div class="mbar-bg"><div class="mbar-fill" style="width:'+s+'%;background:'+MODEL_COLS[i]+'"></div></div><span class="mbar-val">'+s+'</span></div>';}).join('');
+  const el=document.getElementById('sim-result');el.style.display='block';el.style.borderLeft='3px solid '+(data.riskScore>=55?'var(--red)':data.riskScore>=25?'var(--ora)':'var(--grn)');
+  el.innerHTML='<div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div style="font-size:52px;font-weight:700;font-family:var(--mono);color:'+rc+';line-height:1">'+data.riskScore+'</div><div><div style="font-size:18px;font-weight:800;color:'+rc+';text-transform:uppercase;letter-spacing:1px">'+data.verdict+'</div><div style="font-size:12px;color:var(--t3);margin-top:2px">'+data.type+'</div></div></div><div class="dp-lbl">Why Flagged</div>'+reasons+'<div class="dp-lbl" style="margin-top:12px">Model Scores</div>'+mbars;
+}
+function renderAnalytics(){
+  const types=['Phishing','Financial Fraud','Identity Theft','Prize Scam','Job Scam','General Scam'],tCols=['#ff4560','#ff9f43','#b388ff','#4da6ff','#00e676','#ffd700'],tTotal=Object.values(stats.byType).reduce((a,b)=>a+b,0)||1;
+  document.getElementById('an-type').innerHTML=types.map((t,i)=>{const n=stats.byType[t]||0;return '<div class="bar-row"><span class="bar-lbl" style="font-size:10px">'+t+'</span><div class="bar-bg"><div class="bar-fill" style="width:'+Math.round(n/tTotal*100)+'%;background:'+tCols[i]+'"></div></div><span class="bar-num">'+n+'</span></div>';}).join('');
+  const accs=[98.6,99.1,96.4,97.2,97.8];
+  document.getElementById('an-models').innerHTML=MODELS.map((m,i)=>'<div class="bar-row"><span class="bar-lbl">'+m+'</span><div class="bar-bg"><div class="bar-fill" style="width:'+accs[i]+'%;background:'+MODEL_COLS[i]+'"></div></div><span class="bar-num" style="color:'+MODEL_COLS[i]+';width:44px">'+accs[i]+'%</span></div>').join('');
+  const sc={};scamList.forEach(m=>{sc[m.sender]=(sc[m.sender]||0)+1;});const top=Object.entries(sc).sort((a,b)=>b[1]-a[1]).slice(0,8),maxN=top[0]?.[1]||1;
+  document.getElementById('an-senders').innerHTML=top.length?top.map(([s,n])=>'<div class="bar-row"><span class="bar-lbl" style="font-size:10px">'+esc(s)+'</span><div class="bar-bg"><div class="bar-fill" style="width:'+Math.round(n/maxN*100)+'%;background:var(--red)"></div></div><span class="bar-num">'+n+'</span></div>').join(''):'<div style="color:var(--t3);font-size:12px">No scam senders yet</div>';
+}
+function renderSettings(){document.getElementById('settings-content').innerHTML='<div class="set-card"><div class="set-sec">Notifications</div><div class="set-row"><div class="set-info"><div class="set-name">🔔 Alert Popups</div><div class="set-desc">Show toast when new scam email arrives</div></div><div class="toggle '+(notifEnabled?'on':'')+'" onclick="notifEnabled=!notifEnabled;this.classList.toggle(\'on\')"></div></div></div><div class="set-card"><div class="set-sec">Email Account</div><div class="set-row"><div class="set-info"><div class="set-name">Connected Email</div><div class="set-desc">To change your email, edit the <strong>.env</strong> file and restart with <code>npm start</code></div></div></div><div style="margin-top:10px;display:flex;gap:8px"><button class="sbtn sec" onclick="document.getElementById(\'setup-overlay\').classList.add(\'show\')">📖 Setup Guide</button><button class="sbtn sec" onclick="reconnect()">🔄 Reconnect</button></div></div>';}
+function updateStats(){
+  document.getElementById('h-scan').textContent=stats.scanned;document.getElementById('h-block').textContent=stats.blocked;document.getElementById('h-safe').textContent=stats.safe;
+  document.getElementById('mc-scan').textContent=stats.scanned;document.getElementById('mc-block').textContent=stats.blocked;
+  const pct=stats.scanned?((stats.blocked/stats.scanned)*100).toFixed(1):0;
+  document.getElementById('mc-sub').textContent=pct+'% of emails';
+  document.getElementById('fill-block').style.width=Math.min(100,pct*3)+'%';
+  document.getElementById('fill-scan').style.width=Math.min(100,stats.scanned/2)+'%';
+}
+const PAGE_LABELS={dashboard:'Overview',messages:'All Emails',scamlist:'Scam Registry',simulate:'Test Email',analytics:'Analytics',settings:'Settings'};
+function switchPage(page,navEl){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');if(navEl)navEl.classList.add('active');
+  document.getElementById('tab-label').textContent=PAGE_LABELS[page]||page;
+  if(page==='analytics')renderAnalytics();if(page==='settings')renderSettings();if(page==='scamlist')renderScamTable();
+}
+function exportCSV(){const rows=[['Sender','Subject','Risk','Verdict','Type','Time'],...scamList.map(m=>['"'+m.sender+'"','"'+(m.subject||'').replace(/"/g,'""')+'"',m.riskScore,m.verdict,m.type,m.receivedAt])];const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(rows.map(r=>r.join(',')).join('\n'));a.download='scamshield_emails.csv';a.click();}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+renderSettings();renderAnalytics();connectWS();
+</script>
+</body>
+</html>
