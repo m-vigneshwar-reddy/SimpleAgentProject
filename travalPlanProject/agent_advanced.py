@@ -1,4 +1,4 @@
-from tool_advanced import (
+from travalPlanProject.tool_advanced import (
     suggest_hotels, 
     suggest_transport, 
     suggest_places, 
@@ -10,8 +10,8 @@ from tool_advanced import (
     estimate_flight_cost,
     generate_packing_list,
     generate_trip_stats,
-    call_ollama
 )
+from travalPlanProject.ai_adapter import call_ollama
 import json
 
 
