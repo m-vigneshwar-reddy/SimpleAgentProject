@@ -1,0 +1,39 @@
+# Node.js dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+build/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# SQLite
+*.db
+
+# IDE / editor
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Library folders
+lib/
+
+# System files
+.DS_Store
+Thumbs.db
