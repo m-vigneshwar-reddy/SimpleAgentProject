@@ -1,0 +1,4 @@
+customer_id,customer_name,signup_date,last_active_date,logins_30d,logins_7d,avg_time_minutes_30d,core_feature_calls_30d,api_calls_30d,subscription_tier,last_payment_date,payment_status,billing_issues_flag,support_tickets_30d,unresolved_tickets,ticket_sentiment_neg_pct,contract_end_date,spend_30d,feature_adoption_score
+CUST001,Alpha Co,2022-05-10,2026-05-18,40,12,35,120,540,Pro,2026-04-20,ok,0,1,0,0.0,2027-04-30,1200,88
+CUST002,Beta LLC,2020-11-02,2026-05-10,25,2,18,20,60,Standard,2026-03-01,ok,0,4,2,0.6,2026-06-10,300,28
+CUST003,Gamma Inc,2021-07-15,2026-04-01,10,0,5,2,5,Enterprise,2025-12-20,failed,1,6,4,0.75,2026-05-30,1500,12
