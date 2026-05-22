@@ -1,0 +1,18 @@
+[project]
+name = "customer-churn-predictor"
+version = "0.1.0"
+description = "Customer churn analysis package for sample dataset reporting."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+churn-analyze = "CustomerChurnPredictor.churn_analyzer:main"
+
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["CustomerChurnPredictor"]

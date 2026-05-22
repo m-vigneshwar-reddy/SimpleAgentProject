@@ -169,6 +169,39 @@ def main():
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(reports, f, indent=2)
 
+    # Also write a CSV summary for easy ingestion into BI tools
+    out_csv = REPORTS_DIR / 'churn_reports.csv'
+    def write_csv(reports_list, path):
+        fieldnames = [
+            'customer_id', 'customer_name',
+            'risk_classification', 'churn_probability_percent', 'time_horizon',
+            'primary_driver', 'secondary_driver',
+            'behavioral_summary',
+            'trigger_action_immediate_next_24_hours', 'value_intervention_next_7_days', 'commercial_safeguard',
+            'signals'
+        ]
+        with open(path, 'w', newline='', encoding='utf-8') as cf:
+            writer = csv.DictWriter(cf, fieldnames=fieldnames)
+            writer.writeheader()
+            for r in reports_list:
+                row = {
+                    'customer_id': r.get('customer_id'),
+                    'customer_name': r.get('customer_name'),
+                    'risk_classification': r.get('risk_profile', {}).get('risk_classification'),
+                    'churn_probability_percent': r.get('risk_profile', {}).get('churn_probability_percent'),
+                    'time_horizon': r.get('risk_profile', {}).get('time_horizon'),
+                    'primary_driver': r.get('core_drivers', {}).get('primary_driver'),
+                    'secondary_driver': r.get('core_drivers', {}).get('secondary_driver'),
+                    'behavioral_summary': r.get('behavioral_summary'),
+                    'trigger_action_immediate_next_24_hours': r.get('playbook', {}).get('trigger_action_immediate_next_24_hours'),
+                    'value_intervention_next_7_days': r.get('playbook', {}).get('value_intervention_next_7_days'),
+                    'commercial_safeguard': r.get('playbook', {}).get('commercial_safeguard'),
+                    'signals': json.dumps(r.get('signals') or [])
+                }
+                writer.writerow(row)
+
+    write_csv(reports, out_csv)
+
     for r in reports:
         print('\n' + '=' * 60)
         print(f"🚨 CHURN RISK REPORT: {r['customer_name']} ({r['customer_id']})")
@@ -189,6 +222,7 @@ def main():
         print(f"*   **Value Intervention (Next 7 Days):** {pb['value_intervention_next_7_days']}")
         print(f"*   **Commercial Safeguard:** {pb['commercial_safeguard']}")
     print('\nReports written to:', out_path)
+    print('CSV report written to:', out_csv)
 
 
 if __name__ == '__main__':
