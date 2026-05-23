@@ -8,7 +8,7 @@
       "time_horizon": "Imminent (0-14 days)"
     },
     "core_drivers": {
-      "primary_driver": "contract ending in -343 days",
+      "primary_driver": "contract ending in -342 days",
       "secondary_driver": ""
     },
     "behavioral_summary": "Usage and payments are generally healthy.",
@@ -20,7 +20,7 @@
     "signals": [
       [
         "Account Health",
-        "contract ending in -343 days"
+        "contract ending in -342 days"
       ]
     ]
   },
@@ -53,11 +53,11 @@
       ],
       [
         "Account Health",
-        "payment_status=ok, last_payment_days=82"
+        "payment_status=ok, last_payment_days=83"
       ],
       [
         "Account Health",
-        "contract ending in -19 days"
+        "contract ending in -18 days"
       ],
       [
         "Value Disconnection",
@@ -94,15 +94,3000 @@
       ],
       [
         "Account Health",
-        "payment_status=failed, last_payment_days=153"
+        "payment_status=failed, last_payment_days=154"
       ],
       [
         "Account Health",
-        "contract ending in -8 days"
+        "contract ending in -7 days"
       ],
       [
         "Value Disconnection",
         "spend_30d=1500.0, adoption_score=12.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST004",
+    "customer_name": "Epsilon Inc",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:2), neg_sentiment:0.94",
+      "secondary_driver": "contract ending in -503 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:2), neg_sentiment:0.94"
+      ],
+      [
+        "Account Health",
+        "contract ending in -503 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST005",
+    "customer_name": "Epsilon Partners",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=ok, last_payment_days=61",
+      "secondary_driver": "contract ending in -24 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=61"
+      ],
+      [
+        "Account Health",
+        "contract ending in -24 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST006",
+    "customer_name": "Phi Systems",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.14",
+      "secondary_driver": "payment_status=ok, last_payment_days=88"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.14"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=88"
+      ],
+      [
+        "Account Health",
+        "contract ending in -578 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=4440.0, adoption_score=10.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST007",
+    "customer_name": "Vortex Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "23 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "contract ending in -462 days"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer a live optimization session and short checklist to restore core usage.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "23 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Account Health",
+        "contract ending in -462 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST008",
+    "customer_name": "Stellar Technologies",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 tickets (unresolved:2), neg_sentiment:0.11",
+      "secondary_driver": "payment_status=ok, last_payment_days=73"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:2), neg_sentiment:0.11"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=73"
+      ],
+      [
+        "Account Health",
+        "contract ending in -337 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=4452.0, adoption_score=3.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST009",
+    "customer_name": "Lambda Global",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -379 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -379 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST010",
+    "customer_name": "Beta LLC",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "8 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "3 tickets (unresolved:1), neg_sentiment:0.66"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "8 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:1), neg_sentiment:0.66"
+      ],
+      [
+        "Account Health",
+        "contract ending in -427 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST011",
+    "customer_name": "Lambda Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -262 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -262 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST012",
+    "customer_name": "Beta Partners",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "4 tickets (unresolved:0), neg_sentiment:0.51",
+      "secondary_driver": "payment_status=ok, last_payment_days=65"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "4 tickets (unresolved:0), neg_sentiment:0.51"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=65"
+      ],
+      [
+        "Account Health",
+        "contract ending in -216 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=136.0, adoption_score=22.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST013",
+    "customer_name": "Lunar Corp",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:2), neg_sentiment:0.1",
+      "secondary_driver": "contract ending in -312 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:2), neg_sentiment:0.1"
+      ],
+      [
+        "Account Health",
+        "contract ending in -312 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=342.0, adoption_score=22.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST014",
+    "customer_name": "Chi LLC",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "6 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "contract ending in -419 days"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer a live optimization session and short checklist to restore core usage.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "6 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Account Health",
+        "contract ending in -419 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST015",
+    "customer_name": "Alpha LLC",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "5 tickets (unresolved:3), neg_sentiment:0.29",
+      "secondary_driver": "payment_status=failed, last_payment_days=27"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Alpha LLC. ",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "5 tickets (unresolved:3), neg_sentiment:0.29"
+      ],
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=27"
+      ],
+      [
+        "Account Health",
+        "contract ending in -541 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST016",
+    "customer_name": "Lunar Co",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=ok, last_payment_days=79",
+      "secondary_driver": "contract ending in -394 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=79"
+      ],
+      [
+        "Account Health",
+        "contract ending in -394 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=4513.0, adoption_score=17.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST017",
+    "customer_name": "Zeta Co",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "30 logins in 30d vs 2 in last 7d",
+      "secondary_driver": "5 tickets (unresolved:1), neg_sentiment:0.67"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "30 logins in 30d vs 2 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "5 tickets (unresolved:1), neg_sentiment:0.67"
+      ],
+      [
+        "Account Health",
+        "contract ending in -244 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST018",
+    "customer_name": "Pi Holdings",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "19 logins in 30d vs 1 in last 7d",
+      "secondary_driver": "5 tickets (unresolved:0), neg_sentiment:0.88"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "19 logins in 30d vs 1 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "5 tickets (unresolved:0), neg_sentiment:0.88"
+      ],
+      [
+        "Account Health",
+        "contract ending in -287 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST019",
+    "customer_name": "Tau Co",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "38 logins in 30d vs 3 in last 7d",
+      "secondary_driver": "contract ending in -469 days"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer a live optimization session and short checklist to restore core usage.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "38 logins in 30d vs 3 in last 7d"
+      ],
+      [
+        "Account Health",
+        "contract ending in -469 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST020",
+    "customer_name": "Xi Solutions",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "6 tickets (unresolved:1), neg_sentiment:0.74",
+      "secondary_driver": "contract ending in -428 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "6 tickets (unresolved:1), neg_sentiment:0.74"
+      ],
+      [
+        "Account Health",
+        "contract ending in -428 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=3501.0, adoption_score=21.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST021",
+    "customer_name": "Matrix Technologies",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -239 days",
+      "secondary_driver": "spend_30d=1647.0, adoption_score=26.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -239 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=1647.0, adoption_score=26.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST022",
+    "customer_name": "Omega Inc",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "6 tickets (unresolved:6), neg_sentiment:0.18",
+      "secondary_driver": "contract ending in -320 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "6 tickets (unresolved:6), neg_sentiment:0.18"
+      ],
+      [
+        "Account Health",
+        "contract ending in -320 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST023",
+    "customer_name": "Beta Co",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 tickets (unresolved:3), neg_sentiment:0.35",
+      "secondary_driver": "contract ending in -637 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:3), neg_sentiment:0.35"
+      ],
+      [
+        "Account Health",
+        "contract ending in -637 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST024",
+    "customer_name": "Omicron Corp",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -21 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -21 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST025",
+    "customer_name": "Theta Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "4 tickets (unresolved:1), neg_sentiment:0.25",
+      "secondary_driver": "contract ending in -550 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "4 tickets (unresolved:1), neg_sentiment:0.25"
+      ],
+      [
+        "Account Health",
+        "contract ending in -550 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=155.0, adoption_score=28.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST026",
+    "customer_name": "Matrix Inc",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:2), neg_sentiment:0.85",
+      "secondary_driver": "payment_status=failed, last_payment_days=52"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Matrix Inc. ",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:2), neg_sentiment:0.85"
+      ],
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=52"
+      ],
+      [
+        "Account Health",
+        "contract ending in -559 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=1041.0, adoption_score=2.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST027",
+    "customer_name": "Upsilon Technologies",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:1), neg_sentiment:0.41",
+      "secondary_driver": "contract ending in -647 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:1), neg_sentiment:0.41"
+      ],
+      [
+        "Account Health",
+        "contract ending in -647 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST028",
+    "customer_name": "Alpha Holdings",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:1), neg_sentiment:0.52",
+      "secondary_driver": "payment_status=failed, last_payment_days=48"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Alpha Holdings. ",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:1), neg_sentiment:0.52"
+      ],
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=48"
+      ],
+      [
+        "Account Health",
+        "contract ending in -491 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST029",
+    "customer_name": "Chi LLC 29",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 tickets (unresolved:0), neg_sentiment:0.46",
+      "secondary_driver": "contract ending in -688 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:0), neg_sentiment:0.46"
+      ],
+      [
+        "Account Health",
+        "contract ending in -688 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=175.0, adoption_score=0.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST030",
+    "customer_name": "Nu Systems",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 tickets (unresolved:1), neg_sentiment:0.18",
+      "secondary_driver": "payment_status=ok, last_payment_days=68"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:1), neg_sentiment:0.18"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=68"
+      ],
+      [
+        "Account Health",
+        "contract ending in -540 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=4316.0, adoption_score=0.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST031",
+    "customer_name": "Flux Global",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.61",
+      "secondary_driver": "contract ending in -558 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.61"
+      ],
+      [
+        "Account Health",
+        "contract ending in -558 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=736.0, adoption_score=25.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST032",
+    "customer_name": "Nexus Systems",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -604 days",
+      "secondary_driver": "spend_30d=3444.0, adoption_score=14.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -604 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=3444.0, adoption_score=14.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST033",
+    "customer_name": "Flux Global 33",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -166 days",
+      "secondary_driver": "spend_30d=246.0, adoption_score=17.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -166 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=246.0, adoption_score=17.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST034",
+    "customer_name": "Epsilon Systems",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -4 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -4 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST035",
+    "customer_name": "Psi Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -527 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -527 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST036",
+    "customer_name": "Apex Co",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "19 logins in 30d vs 1 in last 7d",
+      "secondary_driver": "contract ending in -294 days"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer a live optimization session and short checklist to restore core usage.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "19 logins in 30d vs 1 in last 7d"
+      ],
+      [
+        "Account Health",
+        "contract ending in -294 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST037",
+    "customer_name": "Phi Corp",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "31 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "contract ending in -53 days"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer a live optimization session and short checklist to restore core usage.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "31 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Account Health",
+        "contract ending in -53 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST038",
+    "customer_name": "Gamma Inc",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "5 tickets (unresolved:3), neg_sentiment:0.7",
+      "secondary_driver": "contract ending in -595 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "5 tickets (unresolved:3), neg_sentiment:0.7"
+      ],
+      [
+        "Account Health",
+        "contract ending in -595 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=2124.0, adoption_score=7.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST039",
+    "customer_name": "Omega Co",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:1), neg_sentiment:0.4",
+      "secondary_driver": "contract ending in -555 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:1), neg_sentiment:0.4"
+      ],
+      [
+        "Account Health",
+        "contract ending in -555 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=259.0, adoption_score=3.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST040",
+    "customer_name": "Nu LLC",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "22 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "1 tickets (unresolved:1), neg_sentiment:0.01"
+    },
+    "behavioral_summary": "Recent sharp engagement decline combined with payment or contract issues \u2014 activity and financial signals both weakening.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "22 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.01"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=61"
+      ],
+      [
+        "Account Health",
+        "contract ending in -326 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST041",
+    "customer_name": "Lunar LLC",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -190 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -190 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST042",
+    "customer_name": "Zeta Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -683 days",
+      "secondary_driver": "spend_30d=3999.0, adoption_score=26.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -683 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=3999.0, adoption_score=26.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST043",
+    "customer_name": "Sigma Technologies",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:2), neg_sentiment:0.71",
+      "secondary_driver": "contract ending in -348 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:2), neg_sentiment:0.71"
+      ],
+      [
+        "Account Health",
+        "contract ending in -348 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=223.0, adoption_score=23.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST044",
+    "customer_name": "Beta LLC 44",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=failed, last_payment_days=37",
+      "secondary_driver": "contract ending in -545 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Beta LLC 44. ",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=37"
+      ],
+      [
+        "Account Health",
+        "contract ending in -545 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST045",
+    "customer_name": "Stellar Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -168 days",
+      "secondary_driver": "spend_30d=2288.0, adoption_score=10.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -168 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=2288.0, adoption_score=10.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST046",
+    "customer_name": "Solar Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -42 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -42 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST047",
+    "customer_name": "Tau Co 47",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -50 days",
+      "secondary_driver": "spend_30d=106.0, adoption_score=27.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -50 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=106.0, adoption_score=27.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST048",
+    "customer_name": "Apex Global",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=ok, last_payment_days=70",
+      "secondary_driver": "contract ending in -593 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=70"
+      ],
+      [
+        "Account Health",
+        "contract ending in -593 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=176.0, adoption_score=25.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST049",
+    "customer_name": "Vertex Partners",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "4 tickets (unresolved:3), neg_sentiment:0.31",
+      "secondary_driver": "payment_status=failed, last_payment_days=51"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Vertex Partners. ",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "4 tickets (unresolved:3), neg_sentiment:0.31"
+      ],
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=51"
+      ],
+      [
+        "Account Health",
+        "contract ending in -482 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=3058.0, adoption_score=14.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST050",
+    "customer_name": "Delta Partners",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -349 days",
+      "secondary_driver": "spend_30d=2364.0, adoption_score=8.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -349 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=2364.0, adoption_score=8.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST051",
+    "customer_name": "Solar Holdings 51",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -642 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -642 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST052",
+    "customer_name": "Kappa LLC",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.08",
+      "secondary_driver": "contract ending in -30 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.08"
+      ],
+      [
+        "Account Health",
+        "contract ending in -30 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST053",
+    "customer_name": "Matrix Solutions",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 tickets (unresolved:0), neg_sentiment:0.76",
+      "secondary_driver": "payment_status=failed, last_payment_days=46"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Matrix Solutions. ",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:0), neg_sentiment:0.76"
+      ],
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=46"
+      ],
+      [
+        "Account Health",
+        "contract ending in -136 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=394.0, adoption_score=18.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST054",
+    "customer_name": "Solar Technologies",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -538 days",
+      "secondary_driver": "spend_30d=399.0, adoption_score=24.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -538 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=399.0, adoption_score=24.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST055",
+    "customer_name": "Lunar Holdings",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "4 tickets (unresolved:0), neg_sentiment:0.66",
+      "secondary_driver": "payment_status=ok, last_payment_days=64"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "4 tickets (unresolved:0), neg_sentiment:0.66"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=64"
+      ],
+      [
+        "Account Health",
+        "contract ending in -421 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=690.0, adoption_score=10.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST056",
+    "customer_name": "Stellar Systems",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "4 tickets (unresolved:3), neg_sentiment:0.12",
+      "secondary_driver": "contract ending in -489 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "4 tickets (unresolved:3), neg_sentiment:0.12"
+      ],
+      [
+        "Account Health",
+        "contract ending in -489 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST057",
+    "customer_name": "Pi Co",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.42",
+      "secondary_driver": "contract ending in -374 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.42"
+      ],
+      [
+        "Account Health",
+        "contract ending in -374 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST058",
+    "customer_name": "Solar Corp",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -1 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -1 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST059",
+    "customer_name": "Tau Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "4 tickets (unresolved:1), neg_sentiment:0.57",
+      "secondary_driver": "contract ending in -181 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "4 tickets (unresolved:1), neg_sentiment:0.57"
+      ],
+      [
+        "Account Health",
+        "contract ending in -181 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST060",
+    "customer_name": "Vertex Inc",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -707 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -707 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST061",
+    "customer_name": "Stellar Inc",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:1), neg_sentiment:0.65",
+      "secondary_driver": "payment_status=failed, last_payment_days=56"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Stellar Inc. ",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:1), neg_sentiment:0.65"
+      ],
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=56"
+      ],
+      [
+        "Account Health",
+        "contract ending in -661 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=340.0, adoption_score=25.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST062",
+    "customer_name": "Chi Technologies",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "9 logins in 30d vs 1 in last 7d",
+      "secondary_driver": "contract ending in -539 days"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer a live optimization session and short checklist to restore core usage.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "9 logins in 30d vs 1 in last 7d"
+      ],
+      [
+        "Account Health",
+        "contract ending in -539 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST063",
+    "customer_name": "Upsilon Inc",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=ok, last_payment_days=62",
+      "secondary_driver": "contract ending in -61 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=62"
+      ],
+      [
+        "Account Health",
+        "contract ending in -61 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=967.0, adoption_score=11.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST064",
+    "customer_name": "Nova Partners",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "4 tickets (unresolved:3), neg_sentiment:0.9",
+      "secondary_driver": "payment_status=ok, last_payment_days=73"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "4 tickets (unresolved:3), neg_sentiment:0.9"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=73"
+      ],
+      [
+        "Account Health",
+        "contract ending in -526 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=336.0, adoption_score=20.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST065",
+    "customer_name": "Vortex Co",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=failed, last_payment_days=30",
+      "secondary_driver": "contract ending in -296 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Vortex Co. ",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=30"
+      ],
+      [
+        "Account Health",
+        "contract ending in -296 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST066",
+    "customer_name": "Psi Partners",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "9 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "3 tickets (unresolved:1), neg_sentiment:0.61"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "9 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:1), neg_sentiment:0.61"
+      ],
+      [
+        "Account Health",
+        "contract ending in -273 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST067",
+    "customer_name": "Omicron Corp 67",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -283 days",
+      "secondary_driver": "spend_30d=1897.0, adoption_score=28.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -283 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=1897.0, adoption_score=28.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST068",
+    "customer_name": "Iota LLC",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=failed, last_payment_days=39",
+      "secondary_driver": "contract ending in -640 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Iota LLC. ",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=39"
+      ],
+      [
+        "Account Health",
+        "contract ending in -640 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST069",
+    "customer_name": "Solar Holdings 69",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=failed, last_payment_days=15",
+      "secondary_driver": "contract ending in -614 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Solar Holdings 69. ",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=15"
+      ],
+      [
+        "Account Health",
+        "contract ending in -614 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST070",
+    "customer_name": "Apex Inc",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "31 logins in 30d vs 3 in last 7d",
+      "secondary_driver": "contract ending in -473 days"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer a live optimization session and short checklist to restore core usage.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "31 logins in 30d vs 3 in last 7d"
+      ],
+      [
+        "Account Health",
+        "contract ending in -473 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST071",
+    "customer_name": "Omicron LLC",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -352 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -352 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST072",
+    "customer_name": "Omega Technologies",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -287 days",
+      "secondary_driver": "spend_30d=1270.0, adoption_score=3.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -287 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=1270.0, adoption_score=3.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST073",
+    "customer_name": "Xi Global",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=failed, last_payment_days=30",
+      "secondary_driver": "contract ending in -164 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Create high-priority billing recovery workflow; alert CSM and auto-send invoice reminder to Xi Global. ",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=failed, last_payment_days=30"
+      ],
+      [
+        "Account Health",
+        "contract ending in -164 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=288.0, adoption_score=16.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST074",
+    "customer_name": "Beta Inc",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -675 days",
+      "secondary_driver": "spend_30d=2340.0, adoption_score=2.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -675 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=2340.0, adoption_score=2.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST075",
+    "customer_name": "Omicron Solutions",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=ok, last_payment_days=82",
+      "secondary_driver": "contract ending in -278 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=82"
+      ],
+      [
+        "Account Health",
+        "contract ending in -278 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=748.0, adoption_score=4.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST076",
+    "customer_name": "Pi Partners",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.51",
+      "secondary_driver": "payment_status=ok, last_payment_days=948"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.51"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=948"
+      ],
+      [
+        "Account Health",
+        "contract ending in -84 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=164.0, adoption_score=23.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST077",
+    "customer_name": "Quantum Technologies",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=ok, last_payment_days=61",
+      "secondary_driver": "contract ending in -372 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=61"
+      ],
+      [
+        "Account Health",
+        "contract ending in -372 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=4708.0, adoption_score=29.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST078",
+    "customer_name": "Apex Systems",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -464 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -464 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST079",
+    "customer_name": "Flux Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -566 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -566 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST080",
+    "customer_name": "Eta Solutions 80",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "45 logins in 30d vs 2 in last 7d",
+      "secondary_driver": "1 tickets (unresolved:1), neg_sentiment:0.67"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "45 logins in 30d vs 2 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.67"
+      ],
+      [
+        "Account Health",
+        "contract ending in -319 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST081",
+    "customer_name": "Psi Systems",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -216 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -216 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST082",
+    "customer_name": "Omicron Systems",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:1), neg_sentiment:0.92",
+      "secondary_driver": "payment_status=ok, last_payment_days=72"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:1), neg_sentiment:0.92"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=72"
+      ],
+      [
+        "Account Health",
+        "contract ending in -272 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=4194.0, adoption_score=26.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST083",
+    "customer_name": "Alpha Co",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -560 days",
+      "secondary_driver": "spend_30d=172.0, adoption_score=17.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -560 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=172.0, adoption_score=17.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST084",
+    "customer_name": "Phi Partners",
+    "risk_profile": {
+      "risk_classification": "High",
+      "churn_probability_percent": 90,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.49",
+      "secondary_driver": "payment_status=ok, last_payment_days=463"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Offer targeted discount or 1-month credit contingent on implementation milestones; propose contract extension with dedicated onboarding."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.49"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=463"
+      ],
+      [
+        "Account Health",
+        "contract ending in -343 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=180.0, adoption_score=24.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST085",
+    "customer_name": "Vertex Holdings",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.05",
+      "secondary_driver": "contract ending in -307 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.05"
+      ],
+      [
+        "Account Health",
+        "contract ending in -307 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=1040.0, adoption_score=3.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST086",
+    "customer_name": "Delta Inc",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -295 days",
+      "secondary_driver": "spend_30d=230.0, adoption_score=9.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -295 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=230.0, adoption_score=9.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST087",
+    "customer_name": "Vortex Corp",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.29",
+      "secondary_driver": "contract ending in -314 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.29"
+      ],
+      [
+        "Account Health",
+        "contract ending in -314 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST088",
+    "customer_name": "Beta Solutions",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -130 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -130 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST089",
+    "customer_name": "Epsilon Technologies",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "12 logins in 30d vs 1 in last 7d",
+      "secondary_driver": "contract ending in -600 days"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "12 logins in 30d vs 1 in last 7d"
+      ],
+      [
+        "Account Health",
+        "contract ending in -600 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=278.0, adoption_score=21.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST090",
+    "customer_name": "Lunar Global",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "1 tickets (unresolved:1), neg_sentiment:0.51",
+      "secondary_driver": "contract ending in -241 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "1 tickets (unresolved:1), neg_sentiment:0.51"
+      ],
+      [
+        "Account Health",
+        "contract ending in -241 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST091",
+    "customer_name": "Stellar Global",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "payment_status=ok, last_payment_days=1333",
+      "secondary_driver": "contract ending in -629 days"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=1333"
+      ],
+      [
+        "Account Health",
+        "contract ending in -629 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=146.0, adoption_score=19.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST092",
+    "customer_name": "Nu Solutions",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -501 days",
+      "secondary_driver": "spend_30d=330.0, adoption_score=3.0"
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -501 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=330.0, adoption_score=3.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST093",
+    "customer_name": "Mu Inc",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 tickets (unresolved:2), neg_sentiment:0.07",
+      "secondary_driver": "contract ending in -73 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:2), neg_sentiment:0.07"
+      ],
+      [
+        "Account Health",
+        "contract ending in -73 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST094",
+    "customer_name": "Nova Holdings",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "6 tickets (unresolved:5), neg_sentiment:0.66",
+      "secondary_driver": "contract ending in -100 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "6 tickets (unresolved:5), neg_sentiment:0.66"
+      ],
+      [
+        "Account Health",
+        "contract ending in -100 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=683.0, adoption_score=18.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST095",
+    "customer_name": "Zeta Holdings 95",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "5 tickets (unresolved:3), neg_sentiment:0.19"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "3 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "5 tickets (unresolved:3), neg_sentiment:0.19"
+      ],
+      [
+        "Account Health",
+        "contract ending in -106 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=369.0, adoption_score=29.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST096",
+    "customer_name": "Kappa LLC 96",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "2 tickets (unresolved:2), neg_sentiment:0.13",
+      "secondary_driver": "payment_status=ok, last_payment_days=76"
+    },
+    "behavioral_summary": "Account shows billing or contract health problems which increase churn risk.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "2 tickets (unresolved:2), neg_sentiment:0.13"
+      ],
+      [
+        "Account Health",
+        "payment_status=ok, last_payment_days=76"
+      ],
+      [
+        "Account Health",
+        "contract ending in -292 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=4657.0, adoption_score=17.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST097",
+    "customer_name": "Kappa Co",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "6 tickets (unresolved:4), neg_sentiment:0.28",
+      "secondary_driver": "contract ending in -581 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Offer tailored onboarding/implementation session and provide sample workflows that map product features to their ROI.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "6 tickets (unresolved:4), neg_sentiment:0.28"
+      ],
+      [
+        "Account Health",
+        "contract ending in -581 days"
+      ],
+      [
+        "Value Disconnection",
+        "spend_30d=3292.0, adoption_score=1.0"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST098",
+    "customer_name": "Quantum Corp",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 20,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 tickets (unresolved:1), neg_sentiment:0.87",
+      "secondary_driver": "contract ending in -40 days"
+    },
+    "behavioral_summary": "Multiple support tickets with negative sentiment indicate unresolved friction.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Open high-priority support escalation; assign senior engineer and schedule a sync call.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:1), neg_sentiment:0.87"
+      ],
+      [
+        "Account Health",
+        "contract ending in -40 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST099",
+    "customer_name": "Solar Solutions",
+    "risk_profile": {
+      "risk_classification": "Medium",
+      "churn_probability_percent": 65,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "3 logins in 30d vs 0 in last 7d",
+      "secondary_driver": "3 tickets (unresolved:2), neg_sentiment:0.93"
+    },
+    "behavioral_summary": "User activity has fallen sharply; likely losing interest or facing blockers in core workflows.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Send segmented re-engagement email with 1-click tutorial and targeted in-app nudge for core workflows.",
+      "value_intervention_next_7_days": "Schedule a 30-min technical deep-dive with a solutions engineer and provide temporary workaround documentation.",
+      "commercial_safeguard": "Propose plan review and small loyalty credit; prioritize feature enablement credits."
+    },
+    "signals": [
+      [
+        "Engagement Decay",
+        "3 logins in 30d vs 0 in last 7d"
+      ],
+      [
+        "Friction & Support",
+        "3 tickets (unresolved:2), neg_sentiment:0.93"
+      ],
+      [
+        "Account Health",
+        "contract ending in -322 days"
+      ]
+    ]
+  },
+  {
+    "customer_id": "CUST100",
+    "customer_name": "Delta Systems",
+    "risk_profile": {
+      "risk_classification": "Low",
+      "churn_probability_percent": 10,
+      "time_horizon": "Imminent (0-14 days)"
+    },
+    "core_drivers": {
+      "primary_driver": "contract ending in -364 days",
+      "secondary_driver": ""
+    },
+    "behavioral_summary": "Usage and payments are generally healthy.",
+    "playbook": {
+      "trigger_action_immediate_next_24_hours": "Monitor weekly; no immediate trigger.",
+      "value_intervention_next_7_days": "Share advanced best-practices and customer case studies matching their tier.",
+      "commercial_safeguard": "No commercial action; continue value reinforcement."
+    },
+    "signals": [
+      [
+        "Account Health",
+        "contract ending in -364 days"
       ]
     ]
   }
